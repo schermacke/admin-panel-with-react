@@ -3,8 +3,9 @@ import axios from "axios";
 import "./App.css";
 
 const AdminPanel = () => {
-  const [newImageUrl, setNewImageUrl] = useState("");
-  const [newTextH2, setNewTextH2] = useState("");
+  const [ newImageUrl, setNewImageUrl ] = useState("");
+  const [ newTextH2, setNewTextH2 ] = useState("");
+  const [ newParagraph, setNewParagraph ] = useState("");
   //const [selectedFile, setSelectedFile] = useState(null);
 
   const updateImageUrl = () => {
@@ -22,6 +23,18 @@ const AdminPanel = () => {
   const updateText = () => {
     axios
       .put("http://localhost:3000/api/image", { texth2: newTextH2 })
+      .then(() => {
+        alert("Text updated successfully!");
+      })
+      .catch((error) => {
+        console.error("Error updating Text:", error);
+        alert("Failed to update Text.");
+      });
+  };
+
+  const updateSubText = () => {
+    axios
+      .put("http://localhost:3000/api/image", { textParagraph: newParagraph})
       .then(() => {
         alert("Text updated successfully!");
       })
@@ -58,6 +71,19 @@ const AdminPanel = () => {
           placeholder="Enter new Text"
         />
         <button className="button" onClick={updateText}>
+          Update Text
+        </button>
+        <br />
+        <h3>Sub Titulo</h3>
+        <input
+          style={{ minWidth: "500px" }}
+          size={"large"}
+          className="input"
+          value={newParagraph}
+          onChange={(e) => setNewParagraph(e.target.value)}
+          placeholder="Enter new Text"
+        />
+        <button className="button" onClick={updateSubText}>
           Update Text
         </button>
       </div>

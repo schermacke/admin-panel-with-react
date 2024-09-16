@@ -57,9 +57,10 @@ const Home = () => {
   }, []);
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} paddingTop={10}            >
       <Grid item xs={12} md={12}>
         <Grid
+        display="flex"
           direction="column"
           justifyContent="center"
           alignItems="center"
@@ -91,8 +92,8 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} paddingBottom={5} style={{ textAlign: "center" }}>
             <p style={{ fontFamily: "cursive", fontSize: "20px" }}>
-              {newParagraph}
-              Sou desenvolvedor Front-End!
+             Sou desenvolvedor Front-End!<br />
+             {newParagraph}
             </p>
           </Grid>
         </Grid>
