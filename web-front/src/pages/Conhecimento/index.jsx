@@ -4,23 +4,23 @@ import cardData from "./arrayImage";
 
 const Sobre = () => {
   return (
-    <Grid container spacing={1} padding={2.5}>
+    <Grid container>
       <Grid item xs={12}>
-        <Grid paddingTop={5}>
-          <h3
+        <Grid paddingTop={12} display={"flex"} justifyContent={"center"}>
+          <h2
             style={{
-              display: "flex",
-              justifyContent: "center",
-              textAlign: "center",
+              fontFamily: "cursive",
+              fontSize: "30px",
             }}
           >
             Conhecimento
-          </h3>
+          </h2>
         </Grid>
         <Grid
           container
           spacing={2}
-          paddingTop={5}
+          padding={2}
+          paddingTop={1}
           justifyContent={"center"}
           display={"flex"}
           alignItems={"center"}
@@ -30,8 +30,8 @@ const Sobre = () => {
         >
           {cardData.map((card) => (
             <Grid item xs={6} sm={4} md={3} key={card.id}>
-              <Card variant="elevation" >
-                <CardContent >
+              <Card variant="elevation">
+                <CardContent>
                   <img
                     src={card.image}
                     srcSet={`${card.image}?dpr=2 2x`}

@@ -15,7 +15,7 @@ import avatarImage from '../static/images/avatar/2.jpg';
 const settings = [
   { name: 'Sobre', route: 'sobre' },
   { name: 'Conhecimento', route: 'conhecimento' },
-  { name: 'Contato', route: 'contato' },
+  { name: 'Nota', route: 'nota' },
 ];
 
 function ResponsiveAppBar() {

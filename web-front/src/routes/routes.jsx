@@ -1,7 +1,7 @@
 import Home from '../pages/Home/index';
 import Sobre from '../pages/Sobre/index';
 import Conhecimento from '../pages/Conhecimento/index';
-import Contato from '../pages/Contato/index';
+import Nota from '../pages/Nota/index';
 import NotFound from "../pages/notFound/index";
 
 
@@ -26,9 +26,9 @@ export const routesList = [
   },
   {
     id: 3,
-    description: 'Contato',
-    path: '/contato',
-    component: <Contato />
+    description: 'Nota',
+    path: '/Nota',
+    component: <Nota />
   },
   {
     id: 4,

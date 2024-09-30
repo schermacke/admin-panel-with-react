@@ -7,7 +7,7 @@
 
 /*===================================================*/
 
-.imagePerfilStyle {
+/*.imagePerfilStyle {
     border-radius: 50px;
     width: 40%;
     height: 30%;
@@ -119,11 +119,12 @@
     .gridImagePerfil img {
       order: 2;
       width: 90%;
-      height: 80%;
-      margin-top: 15%;
+      height: 90%;
+      margin-top: 5%;
     }
   
     .gridImagePerfil p {
       order: 3;
+      margin-top: 15%;
     }
 }

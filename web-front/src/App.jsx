@@ -9,7 +9,7 @@ import ResponsiveAppBar from './components/navBar.jsx';
 
 
 function App() {
-  const [themeSelected, setThemeSelected] = useState('dark');
+  const [themeSelected, setThemeSelected] = useState('light');
 
   const darkMode = createTheme({
     palette: {
@@ -34,10 +34,10 @@ function App() {
 
   return (
 
-    <ThemeProvider theme={themeSelected === 'dark' ? darkMode : lightMode}>
+    <ThemeProvider theme={themeSelected === 'light' ? lightMode : darkMode }>
       <CssBaseline />
-      <IconButton sx={{ position: 'absolute', right: 5, top: 70 }} onClick={() => setThemeSelected(themeSelected === 'dark' ? 'light' : 'dark')}>
-        {themeSelected === 'dark' ? <FaMoon color='#ffffff' /> : <FaSun color='#2b2b2b' />}
+      <IconButton sx={{ position: 'absolute', right: 5, top: 70 }} onClick={() => setThemeSelected(themeSelected === 'light' ? 'dark' : 'light')}>
+        {themeSelected === 'dark' ? <FaSun color='#ffffff' /> : <FaMoon color='#2b2b2b' />}
       </IconButton>
       <Grid container spacing={1}>
         <ResponsiveAppBar />

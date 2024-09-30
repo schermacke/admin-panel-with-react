@@ -4,16 +4,21 @@ import Grid from "@mui/material/Grid";
 import "./index.css";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-
+import { motion } from "framer-motion";
+import { Button } from "@mui/material";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 const Home = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [newText, setNewText] = useState("");
   const [newParagraph, setNewParagraph] = useState("");
 
+  const handleClick = () => {
+    window.location.href = "https://www.google.com.br"
+  }
   const fetchImage = () => {
     axios
       .get("http://localhost:3000/api/image")
@@ -30,16 +35,27 @@ const Home = () => {
       .get("http://localhost:3000/api/image")
       .then((response) => {
         setNewText(response.data.texth2);
-        setNewParagraph(response.data.textParagraph);
       })
       .catch((error) => {
         console.error("Erro ao buscar o texto:", error);
       });
   };
 
+  const fetchSubString = () => {
+    axios
+      .get("http://localhost:3000/api/image")
+      .then((response) => {
+        setNewParagraph(response.data.textParagraph);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar texto:", error);
+      });
+  };
+
   useEffect(() => {
     fetchImage();
     fetchString();
+    fetchSubString();
 
     const imageInterval = setInterval(() => {
       fetchImage();
@@ -49,18 +65,22 @@ const Home = () => {
       fetchString();
     }, 2000);
 
-    // Limpar intervalos quando o componente for desmontado
+    const SubTextInterval = setInterval(() => {
+      fetchSubString();
+    }, 2000);
+
     return () => {
       clearInterval(imageInterval);
       clearInterval(textInterval);
+      clearInterval(SubTextInterval);
     };
   }, []);
 
   return (
-    <Grid container spacing={1} paddingTop={10}            >
+    <Grid container spacing={1} paddingTop={10}>
       <Grid item xs={12} md={12}>
         <Grid
-        display="flex"
+          display="flex"
           direction="column"
           justifyContent="center"
           alignItems="center"
@@ -83,18 +103,35 @@ const Home = () => {
             xs={12}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img
-              className="imagePerfilStyle"
-              src={imageUrl}
-              alt="Eduardo"
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
+            <div className="h-[50%] flex items-center justify-center w-full lg:h-[80%]">
+              <motion.img
+                style={{ borderRadius: "40px" }}
+                width={"40%"}
+                src={imageUrl}
+                alt=""
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="box"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              />
+            </div>
           </Grid>
           <Grid item xs={12} paddingBottom={5} style={{ textAlign: "center" }}>
             <p style={{ fontFamily: "cursive", fontSize: "20px" }}>
-             Sou desenvolvedor Front-End!<br />
-             {newParagraph}
+              {newParagraph}
             </p>
+            <Button variant="contained" onClick={handleClick}>
+              <DescriptionIcon
+                style={{
+                  marginRight: "10px",
+                  textAlign: "center",
+                  display: "flex",
+                }}
+              />
+              Meu currículo
+            </Button>
           </Grid>
         </Grid>
       </Grid>
@@ -117,7 +154,8 @@ const Home = () => {
         />
         <LinkedInIcon
           onClick={() => {
-            window.location.href = "https://br.linkedin.com/in/eduardo-schermack";
+            window.location.href =
+              "https://br.linkedin.com/in/eduardo-schermack";
           }}
           fontSize="large"
           color="primary"

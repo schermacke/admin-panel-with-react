@@ -50,7 +50,7 @@ const AdminPanel = () => {
       <h3>imagem principal</h3>
       <div className="inputButton">
         <input
-          style={{ minWidth: "500px" }}
+          style={{ minWidth: "500px", marginRight:"20px" }}
           size={"large"}
           className="input"
           value={newImageUrl}
@@ -63,7 +63,7 @@ const AdminPanel = () => {
         <br />
         <h3>Titulo</h3>
         <input
-          style={{ minWidth: "500px" }}
+          style={{ minWidth: "500px", marginRight:"20px" }}
           size={"large"}
           className="input"
           value={newTextH2}
@@ -76,7 +76,7 @@ const AdminPanel = () => {
         <br />
         <h3>Sub Titulo</h3>
         <input
-          style={{ minWidth: "500px" }}
+          style={{ minWidth: "500px", marginRight:"20px" }}
           size={"large"}
           className="input"
           value={newParagraph}
@@ -87,8 +87,6 @@ const AdminPanel = () => {
           Update Text
         </button>
       </div>
-      <h2>Sessão - sobre</h2>
-      <div></div>
     </div>
   );
 };
